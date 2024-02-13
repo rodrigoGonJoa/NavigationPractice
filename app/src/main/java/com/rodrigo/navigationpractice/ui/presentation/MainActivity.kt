@@ -1,4 +1,4 @@
-package com.rodrigo.navigationpractice
+package com.rodrigo.navigationpractice.ui.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,8 +14,8 @@ import com.rodrigo.navigationpractice.ui.theme.NavigationPracticeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+class MainActivity:ComponentActivity() {
+    override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             NavigationPracticeTheme {
@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(name:String, modifier:Modifier = Modifier) {
     Text(
         text = "Hello $name!",
         modifier = modifier

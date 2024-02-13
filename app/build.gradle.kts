@@ -53,13 +53,14 @@ android {
 
 dependencies {
     val composeBom = "2024.02.00"
-    val corrutines = "1.7.3"
+    val coroutines = "1.7.3"
     val hilt = "2.50"
     val hiltCompiler = "1.1.0"
     val hiltNavigationCompose = "1.1.0"
     val coreKtx = "1.12.0"
     val lifecycleRuntimeKtx = "2.7.0"
     val activityCompose = "1.8.2"
+    val navigationCompose = "2.7.7"
 
     implementation("androidx.core:core-ktx:$coreKtx")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleRuntimeKtx")
@@ -74,13 +75,16 @@ dependencies {
     implementation("androidx.compose.material3:material3")
 
     //Corrutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$corrutines")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$corrutines")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines")
 
     // Hilt
     implementation("com.google.dagger:hilt-android:$hilt")
     implementation("androidx.hilt:hilt-navigation-compose:$hiltNavigationCompose")
     kapt("androidx.hilt:hilt-compiler:$hiltCompiler")
     kapt("com.google.dagger:hilt-android-compiler:$hilt")
+
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:$navigationCompose")
 
 }
