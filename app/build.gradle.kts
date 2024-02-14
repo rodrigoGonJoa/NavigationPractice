@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.detekt) //./gradlew detekt
 }
 
 android {
@@ -62,9 +63,9 @@ dependencies {
     implementation(libs.bundles.basic)
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose.bom)
-    implementation(libs.bundles.coroutines)
     implementation(libs.bundles.hilt)
-    ksp(libs.bundles.hilt.compiler)
     implementation(libs.androidx.navigation.compose)
-
+    implementation(libs.kotlinx.coroutines.core)
+    runtimeOnly(libs.kotlinx.coroutines.android)
+    ksp(libs.bundles.hilt.compiler)
 }

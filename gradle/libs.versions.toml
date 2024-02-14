@@ -12,6 +12,8 @@ lifecycleRuntimeKtx = "2.7.0"
 navigationCompose = "2.7.7"
 composeBom = "2024.02.00"
 ksp = "1.9.22-1.0.17"
+detekt = "1.23.3"
+dependencyAnalysis = "1.29.0"
 
 [libraries]
 # Basic
@@ -46,9 +48,10 @@ library = { id = "com.android.library", version.ref = "application" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinAndroid" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltPlugin" }
 ksp = {id ="com.google.devtools.ksp", version.ref = "ksp"}
+detekt = {id = "io.gitlab.arturbosch.detekt", version.ref = "detekt"}
+dependency-analysis = {id = "com.autonomousapps.dependency-analysis", version.ref = "dependencyAnalysis"}
 
 [bundles]
-coroutines = ["kotlinx-coroutines-android", "kotlinx-coroutines-core"]
 hilt = ["hilt-android", "androidx-hilt-navigation-compose"]
 hilt-compiler = ["androidx-hilt-compiler", "hilt-android-compiler"]
 compose-bom = ["bom-animation", "bom-ui", "bom-ui-graphics", "bom-ui-tooling-preview", "bom-material3"]
