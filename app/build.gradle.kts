@@ -1,8 +1,8 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -24,11 +24,18 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        debug {
+            isMinifyEnabled = false
+            isShrinkResources = false
+            isDebuggable = true
         }
     }
     compileOptions {
@@ -42,7 +49,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.2"
+        kotlinCompilerExtensionVersion = "1.5.9"
     }
     packaging {
         resources {
@@ -52,39 +59,12 @@ android {
 }
 
 dependencies {
-    val composeBom = "2024.02.00"
-    val coroutines = "1.7.3"
-    val hilt = "2.50"
-    val hiltCompiler = "1.1.0"
-    val hiltNavigationCompose = "1.1.0"
-    val coreKtx = "1.12.0"
-    val lifecycleRuntimeKtx = "2.7.0"
-    val activityCompose = "1.8.2"
-    val navigationCompose = "2.7.7"
-
-    implementation("androidx.core:core-ktx:$coreKtx")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleRuntimeKtx")
-    implementation("androidx.activity:activity-compose:$activityCompose")
-
-    // Compose
-    implementation(platform("androidx.compose:compose-bom:$composeBom"))
-    implementation("androidx.compose.animation:animation")
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-
-    //Corrutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines")
-
-    // Hilt
-    implementation("com.google.dagger:hilt-android:$hilt")
-    implementation("androidx.hilt:hilt-navigation-compose:$hiltNavigationCompose")
-    kapt("androidx.hilt:hilt-compiler:$hiltCompiler")
-    kapt("com.google.dagger:hilt-android-compiler:$hilt")
-
-    // Navigation
-    implementation("androidx.navigation:navigation-compose:$navigationCompose")
+    implementation(libs.bundles.basic)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.bundles.compose.bom)
+    implementation(libs.bundles.coroutines)
+    implementation(libs.bundles.hilt)
+    ksp(libs.bundles.hilt.compiler)
+    implementation(libs.androidx.navigation.compose)
 
 }
